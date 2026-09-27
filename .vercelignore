@@ -1,0 +1,8 @@
+# Build artefacts. Harmless, but they carry nested package.json files inside
+# .next/ that make the Vercel CLI resolve more than one project path and refuse
+# to deploy. Git and .gitignore already handle this; this file means the deploy
+# also works from a checkout with no git history.
+.next/
+out/
+node_modules/
+.vercel

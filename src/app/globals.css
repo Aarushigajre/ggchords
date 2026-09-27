@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * Dark, focused, high-contrast. The chord diagrams are the content, so the
+ * chrome stays quiet: near-black backgrounds, one warm accent, and nothing
+ * competing with the fingerboard art.
+ */
+@theme {
+  --color-surface: #0a0a0b;
+  --color-panel: #131316;
+  --color-panel-raised: #1a1a1e;
+  --color-line: #26262c;
+  --color-line-strong: #3a3a42;
+  --color-ink: #f4f4f5;
+  --color-ink-muted: #a1a1aa;
+  --color-ink-faint: #71717a;
+  --color-accent: #f5a524;
+  --color-accent-dim: #b8791a;
+  --color-finger: #fbbf24;
+  --color-barre: #f97316;
+  --color-muted-string: #3f3f46;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The fretboard art is line work, so it wants crisp rendering. */
+svg.fretboard {
+  shape-rendering: geometricPrecision;
+}
+
+/* Focus rings need to be visible but not loud. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #000;
+}
+
+/* Thin, unobtrusive scrollbars inside panels. */
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 4px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
